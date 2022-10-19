@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM openjdk:8-jdk-alpine3.9 as builder
+FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine as builder
 
 RUN apk add --no-cache apache-ant
 RUN mkdir -p /usr/src \
@@ -9,7 +9,7 @@ RUN mkdir -p /usr/src \
   && ant installer
 
 
-FROM openjdk:8-jre-alpine3.9
+FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine
 
 ENV JYTHON_HOME="/opt/jython"
 
